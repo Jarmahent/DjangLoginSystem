@@ -3,7 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name="index"),
     path('json', views.json, name="json"),
-    path('user', views.login, name="user")
+    path('', views.logged_in, name="logged_in")
 ]

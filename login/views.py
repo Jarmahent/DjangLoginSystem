@@ -14,5 +14,5 @@ def json(request):
         ip = request.META.get('REMOTE_ADDR')
     return JsonResponse({'STATUS': ip})
 
-def login(request):
-    return render(request, 'login/login.html')
+def logged_in(request):
+    return render(request, 'login/success.html')
