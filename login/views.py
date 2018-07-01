@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return HttpResponse("Hello!")
@@ -16,3 +17,7 @@ def json(request):
 
 def logged_in(request):
     return render(request, 'login/success.html')
+
+@login_required
+def user_info(request):
+    return render(request, 'users/userinfo.html')
