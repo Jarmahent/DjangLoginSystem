@@ -13,12 +13,16 @@
      <![endif]-->
  </head>
 
- <body style="text-align:center;">
+ <body style="text-align:center;" class="display-4">
    {% if user.is_authenticated %}
-   <div>You are logged in as <div style="color:red;">{{ user.get_username }}</div></div>
+   <div>You are logged in as
+     <div style="color:red;">{{ user.get_username }}</div>
+     <div><a HREF="{% url 'logout'%}">LOGOUT</a></div>
+ </div>
    {% else %}
    <div>You are not logged in <a href="/accounts/login">Log in Here</a></div>
    {% endif %}
+
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
  </body>
 
