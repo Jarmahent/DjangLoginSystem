@@ -35,7 +35,6 @@ def register(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return HttpResponseRedirect('/')
-        else:
-            print(form.errors)
-    form = UserCreationForm()
+    else:
+        form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
