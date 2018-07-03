@@ -1,32 +1,30 @@
- <!DOCTYPE html>
- <html lang="en">
-
-<head>
-     <meta charset="UTF-8">
-     <title>Login</title>
-     <meta name="description" content="DESCRIPTION">
-    <link rel="stylesheet" href="PATH">
-
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-     <!--[if lt IE 9]>
-       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-     <![endif]-->
- </head>
-
- <body style="text-align:center;" class="display-4">
-   {% if user.is_authenticated %}
-    {% if request.user.is_superuser %}
-    <h4 style="color:blue;">You are a superuser</h4>
-    {% endif %}
-   <div>You are logged in as
-     <div style="color:red;">{{ user.get_username }}</div>
-     <div><a HREF="{% url 'logout'%}">LOGOUT</a></div>
- </div>
-   {% else %}
-   <div>You are not logged in <a href="/accounts/login">Log in Here</a></div>
-   {% endif %}
-
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
- </body>
-
- </html>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Login</title>
+      <meta name="description" content="DESCRIPTION">
+      <link rel="stylesheet" href="PATH">
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+      <!--[if lt IE 9]>
+      <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+   </head>
+   <body style="text-align:center;" class="display-4">
+      {% if user.is_authenticated %}
+      {% if request.user.is_superuser %}
+      <div>
+         <h4 style="color:blue;">You are a superuser</h4>
+         <a href="/admin">Admin Control Panel</a>
+      </div>
+      {% endif %}
+      <div>
+         You are logged in as {{ user.get_username }}
+         <div><a HREF="{% url 'logout'%}">LOGOUT</a></div>
+      </div>
+      {% else %}
+      <div>You are not logged in <a href="/accounts/login">Log in Here</a></div>
+      {% endif %}
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   </body>
+</html>

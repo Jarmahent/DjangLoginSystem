@@ -25,7 +25,10 @@ SECRET_KEY = 'as3##w-6tazgg-=jk%mpo^622u+5f5@)!5lf((xczu2snqg)b&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django.local',
+    '127.0.0.1'
+]
 
 
 # Application definition

@@ -1,6 +1,6 @@
 <html>
 <head>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -111,11 +111,28 @@ body {
   <div class="form">
     <form method="post" action="{% url 'register' %}">
     {% csrf_token %}
-    {{ form.errors }}
-    <div>
-      <td>{{ form }}</td>
-    </div>
 
+    <div>
+       <div>
+      <td>{{ form.username.label_tag }}</td>
+      <td>{{ form.username }}</td>
+    </div>
+    <div>
+      <td>{{ form.password1.label_tag }}</td>
+      <td>{{ form.password1 }}</td>
+      <td>{{ form.password2.label_tag }}</td>
+      <td>{{ form.password2}}</td>
+    </div>
+    </div>
+          {% if form.errors %}
+      {% for field in form %}
+          {% for error in field.errors %}
+              <div class="alert alert-danger">
+                  <strong>{{ error|escape|safe }}</strong>
+              </div>
+          {% endfor %}
+      {% endfor %}
+        {% endif %}
     <div>
       <input type="submit" value="Register" />
       <input type="hidden" name="next" value="{{ next }}" />
