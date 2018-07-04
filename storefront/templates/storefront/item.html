@@ -3,32 +3,44 @@
    <head>
       <meta charset="UTF-8">
       <title>Store Front</title>
-      <meta name="description" content="DESCRIPTION">
-      <link rel="stylesheet" href="PATH">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
    </head>
    <body>
       <style>
-         .title{
-         text-align:center;
-         }
-         .item-container{
-           border-radius: 10px;
-           height: 150px;
-           width:100%;
-           box-shadow: 0px 0px 16px 0 rgba(0,0,0,0.2);
-         }
-         .item-image{
-           width:100%;
+      .container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
-         }
+      }
+      .title{
+        font-family: 'Roboto', sans-serif;
+        font-size: 55px;
+      }
+      .items{
+        display: flex;
+        box-shadow: 0px 0px 14px 3px #00000057;
+        height: 150px;
+        width:50%;
+        justify-content: space-evenly;
 
+      }
+      #item-image{
+        border-style: solid;
+        margin:25px;
+      }
+      #item-info{
+        flex-grow: 4;
+      }
       </style>
       <div class="container">
-         <div class="title display-2">Store Front</div>
-         <div class="item-container">
-           <img class="item-image" src="https://i.imgur.com/1eFrq2S.png">
-         </div>
+        <div >
+          <div class="title">Store Front Template</div>
+        </div>
+        <div class="items">
+          <div id="img-div"><img id="item-image" src="http://theadvertplace.com/wp-content/themes/classified/img/placeholder/blogpost-placeholder-100x100.png"></div>
+          <div id="item-info">ITEMS</div>
+        </div>
       </div>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
    </body>
 </html>
