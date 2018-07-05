@@ -18,29 +18,84 @@
         font-size: 55px;
       }
       .items{
+        margin-top: 17px;
         display: flex;
         box-shadow: 0px 0px 14px 3px #00000057;
         height: 150px;
-        width:50%;
+        width:27%;
         justify-content: space-evenly;
 
       }
+
       #item-image{
         border-style: solid;
         margin:25px;
       }
-      #item-info{
+      #item-flex{
         flex-grow: 4;
       }
+      #price{
+        text-align: center;
+        color: #d26c12b0;
+        font-size: 25px;
+        font-family: 'Roboto', sans-serif;
+      }
+      #name{
+
+        font-size: 25px;
+        font-family: 'Roboto', sans-serif;
+      }
+      #shipping{
+        text-align: center;
+        color: red;
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+      }
+      #name:hover{
+
+      }
+      #instock{
+        color: green;
+        text-align: center;
+        margin-top: 20px;
+      }
+      #outstock{
+        color: red;
+        text-align: center;
+        margin-top: 47px;
+      }
+      a{
+        color: black;
+        text-decoration: None;
+      }
+      a:hover{
+        color: #FF5722;
+        cursor: pointer;
+        text-decoration: underline;
+      }
       </style>
+
+
+
       <div class="container">
         <div >
           <div class="title">Store Front Template</div>
         </div>
+        {% for itemlist in items%}
         <div class="items">
           <div id="img-div"><img id="item-image" src="http://theadvertplace.com/wp-content/themes/classified/img/placeholder/blogpost-placeholder-100x100.png"></div>
-          <div id="item-info">ITEMS</div>
+          <div id="item-flex">
+            <div id="name"><a href="#">{{itemlist.item_name}}</a></div>
+            <div id="price">${{itemlist.item_price}}</div>
+            <div id="shipping">Free Shipping</div>
+            {% if itemlist.item_is_available == True %}
+            <div id="instock">In Stock!</div>
+            {% elif itemlist.item_is_available == False %}
+            <div id="outstock">Out of Stock!</div>
+            {% endif %}
+          </div>
         </div>
+        {% endfor %}
       </div>
    </body>
 </html>
