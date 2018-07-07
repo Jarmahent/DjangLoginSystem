@@ -14,12 +14,12 @@ def submit_item(request):
         form = ItemModelForm(request.POST)
         if form.is_valid():
             form.save()
-            print({
-                "item_name": form.cleaned_data.get('item_name'),
-                "item_description": form.cleaned_data.get('item_description'),
-                "item_price": form.cleaned_data.get('item_price'),
-                "item_is_available": form.cleaned_data.get('item_is_available')
-            })
+            # print({
+            #     "item_name": form.cleaned_data.get('item_name'),
+            #     "item_description": form.cleaned_data.get('item_description'),
+            #     "item_price": form.cleaned_data.get('item_price'),
+            #     "item_is_available": form.cleaned_data.get('item_is_available')
+            # })
             return HttpResponseRedirect('/store')
     else:
         form = ItemModelForm()
