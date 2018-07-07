@@ -75,12 +75,11 @@
         text-decoration: underline;
       }
       #submit-link{
+        position: absolute;
         font-size: 25px;
         height: 53px;
         width: 100px;
-        top: -67px;
-        float: right;
-        position: relative;
+        right: 7px;
         font-family: 'Roboto', sans-serif;
         background-color: #7f7fc7;
         border-radius: 5px;
@@ -96,11 +95,36 @@
         color: black;
         transition: all .2s ease-in-out;
       }
+      #admin-link{
+        font-size: 25px;
+        height: 53px;
+        width: 100px;
+        position: absolute;
+        font-family: 'Roboto', sans-serif;
+        background-color: #7f7fc7;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+      }
+      #admin-link:hover{
+        height: 63px;
+        width: 110px;
+        cursor: pointer;
+        color: black;
+        transition: all .2s ease-in-out;
+      }
       </style>
 
       <div>
-        <div class="title">Store Front</div>
+        {% if user.is_authenticated %}
+          {% if request.user.is_superuser %}
+            <a href="{% url 'admin:index' %}"><div id="admin-link"><b>Admin</b></div></a>
+          {% endif %}
+        {% endif %}
         <a href="{% url 'submit' %}"><div id="submit-link"><b>Submit</b></div></a>
+        <div class="title">Store Front</div>
       </div>
 
       <div class="container">
