@@ -34,7 +34,7 @@ def register(request):
             password = form.cleaned_data.get('password2')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/homepage')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})

@@ -1,122 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <title>Store Front</title>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="{% static "storefront/css/items.css" %}" rel="stylesheet">
    </head>
    <body>
-      <style>
-      .container{
-        justify-content: space-evenly;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      .title{
-        text-align: center;
-        font-family: 'Roboto', sans-serif;
-        font-size: 55px;
-      }
-      .items{
-        margin-top: 17px;
-        display: flex;
-        box-shadow: 0px 0px 14px 3px #00000057;
-        height: auto;
-        width:27%;
-        justify-content: space-evenly;
-
-      }
-
-      #item-image{
-        border-style: solid;
-        margin:25px;
-      }
-      #item-flex{
-        flex-grow: 4;
-      }
-      #price{
-        text-align: center;
-        color: #d26c12b0;
-        font-size: 25px;
-        font-family: 'Roboto', sans-serif;
-      }
-      #name{
-
-        font-size: 25px;
-        font-family: 'Roboto', sans-serif;
-      }
-      #shipping{
-        text-align: center;
-        color: red;
-        font-size: 15px;
-        font-family: 'Roboto', sans-serif;
-      }
-      #name:hover{
-
-      }
-      #instock{
-        color: green;
-        text-align: center;
-        margin-top: 20px;
-      }
-      #outstock{
-        color: red;
-        text-align: center;
-        margin-top: 47px;
-      }
-      a{
-        color: black;
-        text-decoration: None;
-      }
-      a:hover{
-        color: #FF5722;
-        cursor: pointer;
-        text-decoration: underline;
-      }
-      #submit-link{
-        position: absolute;
-        font-size: 25px;
-        height: 53px;
-        width: 100px;
-        right: 7px;
-        font-family: 'Roboto', sans-serif;
-        background-color: #7f7fc7;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-      }
-      #submit-link:hover{
-        height: 63px;
-        width: 110px;
-        cursor: pointer;
-        color: black;
-        transition: all .2s ease-in-out;
-      }
-      #admin-link{
-        font-size: 25px;
-        height: 53px;
-        width: 100px;
-        position: absolute;
-        font-family: 'Roboto', sans-serif;
-        background-color: #7f7fc7;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-      }
-      #admin-link:hover{
-        height: 63px;
-        width: 110px;
-        cursor: pointer;
-        color: black;
-        transition: all .2s ease-in-out;
-      }
-      </style>
-
+      <!-- <img src="{% static "storefront/media/test.jpg" %}"> -->
       <div>
         {% if user.is_authenticated %}
           {% if request.user.is_superuser %}
@@ -130,7 +22,7 @@
       <div class="container">
         {% for itemlist in items%}
         <div class="items">
-          <div id="img-div"><img id="item-image" src="http://theadvertplace.com/wp-content/themes/classified/img/placeholder/blogpost-placeholder-100x100.png"></div>
+          <div id="img-div"><img id="item-image" src="{{ itemlist.item_image }}"></div>
           <div id="item-flex">
             <div id="name"><a href="#">{{itemlist.item_name}}</a></div>
             <div id="price">${{itemlist.item_price}}</div>

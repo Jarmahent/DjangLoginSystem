@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,97 +6,20 @@
   <meta charset="UTF-8">
   <title>Submit An Item</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="{% static "storefront/css/submit_item.css" %}" rel="stylesheet">
 
 </head>
 
 <body>
   <style>
-    html {
-      height: 100%;
-    }
-
-    body {
-      background-color: #6dad4b;
-      margin: 0px;
-      height: 100%;
-    }
-
-    .item_form {
-      width: 100%;
-      background-color: #6dad4b;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      align-content: center;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-      margin: auto;
-      width: auto;
-      height: auto;
-      background-color: white;
-    }
-    form{
-      padding: 45px;
-    }
-    form input {
-      text-align: center;
-      font-family: "Roboto", sans-serif;
-      outline: 0;
-      background: #f2f2f2;
-      width: 100%;
-      border: 0;
-      margin: 0 0 15px;
-      padding: 15px;
-      box-sizing: border-box;
-      font-size: 14px;
-    }
-
-    select {
-      font-family: "Roboto", sans-serif;
-      background: #f2f2f2;
-      width: 100%;
-      border: 0;
-      margin: 0 0 15px;
-      padding: 15px;
-      font-size: 14px;
-    }
-
-    label {
-      margin-top: 7px;
-      font-family: "Roboto", sans-serif;
-      display: block;
-      text-align: center;
-      max-width: 100%;
-      margin-bottom: 5px;
-      font-weight: 700;
-    }
-    .subcontainer{
-      resize: both;
-    }
-    #id_item_description{
-      resize: both;
-      font-family: "Roboto", sans-serif;
-      outline: 0;
-      background: #f2f2f2;
-      width: 100%;
-      border: 0;
-      margin: 0 0 15px;
-      padding: 15px;
-      box-sizing: border-box;
-      font-size: 14px;
-      }
-
   </style>
   <div class="item_form">
     <div class="container">
       <div class="subcontainer">
-        <form action="{% url 'submit' %}" method="post">
+        <form action="{% url 'submit' %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
+          <label>{{ form.item_image.label_tag }}</label>
+          {{ form.item_image }}
           <label>{{ form.item_name.label_tag }}</label>
           {{ form.item_name }}
           <label>{{ form.item_description.label_tag }}</label>
@@ -105,6 +29,9 @@
           <label>Will the item be immediately available? </label>
           {{ form.item_is_available }}
           <input type="submit" value="Submit Item" />
+          {% if form.errors %}
+            <b>{{ form.errors }}</b>
+          {% endif %}
         </form>
       </div>
     </div>
