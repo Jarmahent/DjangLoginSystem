@@ -22,10 +22,10 @@
       <div class="container">
         {% for itemlist in items%}
         <div class="items">
-          <div id="img-div"><img id="item-image" src="{{ itemlist.item_image }}"></div>
+          <div id="img-div"><img id="item-image" src="media/{{ itemlist.item_image }}"></div>
           <div id="item-flex">
             <div id="name"><a href="#">{{itemlist.item_name}}</a></div>
-            <div id="price">${{itemlist.item_price}}</div>
+            <div id="price">${{itemlist.item_price|floatformat:2}}</div>
             <div id="shipping">Free Shipping</div>
             {% if itemlist.item_is_available == True %}
             <div id="instock">In Stock!</div>

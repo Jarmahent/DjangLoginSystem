@@ -21,6 +21,8 @@
 }
 
 #item-image{
+  height: 100px;
+  width: 100px;
   border-style: solid;
   margin:25px;
 }
