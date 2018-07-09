@@ -9,6 +9,12 @@ import pprint
 
 
 def store(request):
+    if request.method == 'POST':
+        search_query = request.POST.get("search")
+        raw_results = storeItem.objects.filter(item_name__icontains=search_query)
+        parsed_results = loads(serializers.serialize("json", raw_results))
+        return render(request, "storefront/item.html", {"items": list(parsed_results)})
+        
     data = loads(serializers.serialize("json", storeItem.objects.all()))
     return render(request, 'storefront/item.html', {"items": list(data)})
 
