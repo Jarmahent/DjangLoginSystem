@@ -9,4 +9,4 @@ local_settings.py
 *.idea/
 .nanobox/
 media/
-!media/placeholder.jpg
+!media/placeholder.png

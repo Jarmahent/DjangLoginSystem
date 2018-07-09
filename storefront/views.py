@@ -3,10 +3,14 @@ from django.http import JsonResponse, HttpResponseRedirect
 from storefront.models import storeItem
 from django.contrib.auth.decorators import user_passes_test
 from storefront.forms import ItemModelForm
+from django.core import serializers
+from json import loads, dumps
+import pprint
+
 
 def store(request):
-    items = list(storeItem.objects.values())
-    return render(request, 'storefront/item.html', {"items": items})
+    data = loads(serializers.serialize("json", storeItem.objects.all()))
+    return render(request, 'storefront/item.html', {"items": list(data)})
 
 @user_passes_test(lambda u: u.is_superuser)
 def submit_item(request):

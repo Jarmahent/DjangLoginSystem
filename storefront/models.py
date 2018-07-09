@@ -9,7 +9,7 @@ class storeItem(models.Model):
     item_price = models.DecimalField(decimal_places=2, max_digits=10, default=0)
     item_is_available = models.BooleanField(default=True)
     item_description = models.CharField(max_length=500, default="None")
-    item_image = models.FileField(upload_to="", default='media')
+    item_image = models.FileField(upload_to="", default='placeholder')
 
     def __str__(self):
         return self.item_name

@@ -22,14 +22,14 @@
       <div class="container">
         {% for itemlist in items%}
         <div class="items">
-          <div id="img-div"><img id="item-image" src="media/{{ itemlist.item_image }}"></div>
+          <div id="img-div"><img id="item-image" src="media/{{ itemlist.fields.item_image }}"></div>
           <div id="item-flex">
-            <div id="name"><a href="#">{{itemlist.item_name}}</a></div>
-            <div id="price">${{itemlist.item_price|floatformat:2}}</div>
+            <div id="name"><a href="#">{{itemlist.fields.item_name}}</a></div>
+            <div id="price">${{itemlist.fields.item_price|floatformat:2}}</div>
             <div id="shipping">Free Shipping</div>
-            {% if itemlist.item_is_available == True %}
+            {% if itemlist.fields.item_is_available == True %}
             <div id="instock">In Stock!</div>
-            {% elif itemlist.item_is_available == False %}
+            {% elif itemlist.fields.item_is_available == False %}
             <div id="outstock">Out of Stock!</div>
             {% endif %}
           </div>
