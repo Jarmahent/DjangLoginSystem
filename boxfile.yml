@@ -1,0 +1,10 @@
+run.config:
+  engine: python
+  engine.config:
+    runtime: python-3.6
+
+
+data.djangologin:
+  config:
+    event_scheduler: 'Off'
+  image: nanobox/mysql:5.7

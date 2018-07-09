@@ -1,11 +1,11 @@
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse, HttpResponseRedirect
-from storefront.models import store_item
+from storefront.models import storeItem
 from django.contrib.auth.decorators import user_passes_test
 from storefront.forms import ItemModelForm
 
 def store(request):
-    items = list(store_item.objects.values())
+    items = list(storeItem.objects.values())
     return render(request, 'storefront/item.html', {"items": items})
 
 @user_passes_test(lambda u: u.is_superuser)

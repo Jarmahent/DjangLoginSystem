@@ -26,6 +26,7 @@ SECRET_KEY = 'as3##w-6tazgg-=jk%mpo^622u+5f5@)!5lf((xczu2snqg)b&'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '0.0.0.0',
     'django.local',
     '127.0.0.1'
 ]
@@ -77,11 +78,16 @@ WSGI_APPLICATION = 'loapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+#Install python-mysqldb
+#Install libmysqlclient-dev
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gonano',
+        'USER': os.environ['DATA_DJANGOLOGIN_USER'],
+        'PASSWORD': os.environ['DATA_DJANGOLOGIN_NANOBOX_PASS'],
+        'HOST': os.environ['DATA_DJANGOLOGIN_HOST'],
+        'PORT': '3306'
     }
 }
 

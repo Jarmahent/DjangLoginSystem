@@ -1,5 +1,5 @@
 from django import forms
-from storefront.models import store_item
+from storefront.models import storeItem
 
 class Itemform(forms.ModelForm):
     item_name = forms.CharField(label="Item Name" ,max_length=200)
@@ -11,6 +11,6 @@ class Itemform(forms.ModelForm):
 
 class ItemModelForm(Itemform):
     class Meta:
-        model = store_item
+        model = storeItem
         field = ['item_name', 'item_price', 'item_is_available', 'item_description', 'item_image']
         exclude = ['item_id']
