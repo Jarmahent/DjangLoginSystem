@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import user_passes_test
 from storefront.forms import ItemModelForm
 from django.core import serializers
 from json import loads, dumps
-import pprint
-
+from django.contrib.auth.decorators import login_required
 
 def store(request):
     if request.method == 'POST':
@@ -14,16 +13,19 @@ def store(request):
         raw_results = storeItem.objects.filter(item_name__icontains=search_query)
         parsed_results = loads(serializers.serialize("json", raw_results))
         return render(request, "storefront/item.html", {"items": list(parsed_results)})
-        
+
     data = loads(serializers.serialize("json", storeItem.objects.all()))
     return render(request, 'storefront/item.html', {"items": list(data)})
 
-@user_passes_test(lambda u: u.is_superuser)
+# @user_passes_test(lambda u: u.is_superuser)
+@login_required
 def submit_item(request):
     if request.method == 'POST':
         form = ItemModelForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user_id = request.user
+            instance.save()
             print({
                 "item_name": form.cleaned_data.get('item_name'),
                 "item_description": form.cleaned_data.get('item_description'),

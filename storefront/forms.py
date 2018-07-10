@@ -8,9 +8,8 @@ class Itemform(forms.ModelForm):
     item_is_available = forms.TypedChoiceField(choices=((False, 'No'), (True, 'Yes')))
     item_image = forms.FileField(label="Item Image", required=True)
 
-
 class ItemModelForm(Itemform):
     class Meta:
         model = storeItem
         field = ['item_name', 'item_price', 'item_is_available', 'item_description', 'item_image']
-        exclude = ['item_id']
+        exclude = ['item_id', 'user_id']
