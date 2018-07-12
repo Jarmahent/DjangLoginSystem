@@ -113,17 +113,30 @@ body {
     {% csrf_token %}
 
     <div>
-       <div>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </div>
-    <div>
-      <td>{{ form.password1.label_tag }}</td>
-      <td>{{ form.password1 }}</td>
-      <td>{{ form.password2.label_tag }}</td>
-      <td>{{ form.password2}}</td>
-    </div>
-    </div>
+      <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </div>
+      <div>
+        <td>{{ form.password1.label_tag }}</td>
+        <td>{{ form.password1 }}</td>
+      </div>
+      <div>
+        <td>{{ form.password2.label_tag }}</td>
+        <td>{{ form.password2 }}</td>
+      </div>
+      <div>
+        <td>{{ form.email.label_tag }}</td>
+        <td>{{ form.email }}</td>
+      </div>
+      <div>
+        <td>{{ form.first_name.label_tag }}</td>
+        <td>{{ form.first_name }}</td>
+      </div>
+      <div>
+        <td>{{ form.last_name.label_tag }}</td>
+        <td>{{ form.last_name }}</td>
+      </div>
           {% if form.errors %}
       {% for field in form %}
           {% for error in field.errors %}

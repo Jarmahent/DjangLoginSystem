@@ -4,6 +4,7 @@ from django.template import loader
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from login.forms import CustomUserForm
 from django.contrib import messages
 def index(request):
     return HttpResponse("Hello!")
@@ -27,14 +28,15 @@ def user_info(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            print(form.cleaned_data)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password2')
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password) #User is coming out as None
             login(request, user)
             return HttpResponseRedirect('/homepage')
     else:
-        form = UserCreationForm()
+        form = CustomUserForm()
     return render(request, 'registration/register.html', {'form': form})
