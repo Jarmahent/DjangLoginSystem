@@ -1,11 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from django.template import loader
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from login.forms import CustomUserForm
-from django.contrib import messages
 def index(request):
     return HttpResponse("Hello!")
 
