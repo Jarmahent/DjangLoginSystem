@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from login.forms import CustomUserForm
+
 def index(request):
     return HttpResponse("Hello!")
 
