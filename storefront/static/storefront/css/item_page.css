@@ -1,0 +1,19 @@
+body{
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.item-container{
+  display: flex;
+  align-items: flex-start;
+}
+
+
+#item-image{
+    object-fit: contain;
+    height: 500px;
+    width: 500px;
+    border-style: solid;
+    border-color: #00000030;
+    margin:25px;
+  }

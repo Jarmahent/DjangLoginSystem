@@ -32,7 +32,7 @@
       <div class="container" >
         {% for itemlist in items%}
         <div class="items" onclick="location.href='/store/catalog/{{itemlist.fields.item_name}}'">
-          <div id="img-div"><img id="item-image" src="media/{{ itemlist.fields.item_image }}"></div>
+          <div id="img-div"><img id="item-image" src="{% get_media_prefix  %}{{ itemlist.fields.item_image }}"></div>
           <div id="item-flex">
             <div id="name"><a href="#">{{itemlist.fields.item_name}}</a></div>
             <div id="price">${{itemlist.fields.item_price|floatformat:2}}</div>

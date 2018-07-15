@@ -5,9 +5,12 @@
 
 <head>
      <meta charset="UTF-8">
-     <title>TITLE</title>
+     {% for itemlist in items %}
+     <title>{{itemlist.fields.item_name}}</title>
+     {% endfor %}
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
      <meta name="description" content="DESCRIPTION">
-    <link rel="stylesheet" href="PATH">
+    <link href="{% static "storefront/css/item_page.css" %}" rel="stylesheet">
 
      <!--[if lt IE 9]>
        <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,15 +18,17 @@
  </head>
 
  <body>
-  {% for itemlist in items %}
-  <div id="img-div"><img id="item-image" src="store{% get_media_prefix  %}{{ itemlist.fields.item_image }}"></div>
-    {% get_media_prefix %}
+   <div class="item-container">
+{% for itemlist in items %}
+  <div id="img-div"><img id="item-image" src="{% get_media_prefix  %}{{ itemlist.fields.item_image }}"></div>
     {{itemlist.pk}}
     {{itemlist.fields.item_name}}
     {{itemlist.fields.item_price|floatformat:2}}
     {{itemlist.fields.item_is_available}}
     {{itemlist.fields.item_description}}
+    {{itemlist.fields.user_id}}
   {% endfor %}
+</div>
  </body>
 
  </html>

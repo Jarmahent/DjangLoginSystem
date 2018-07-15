@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import password_change, password_change_done, password_reset
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +25,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('login.urls')),
     path('store/', include('storefront.urls'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

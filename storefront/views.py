@@ -7,6 +7,13 @@ from django.core import serializers
 from json import loads, dumps
 from django.contrib.auth.decorators import login_required
 
+
+'''
+Views for the store page
+store, submit_item, and item_view
+
+'''
+
 def store(request):
     if request.method == 'POST':
         search_query = request.POST.get("search")
@@ -42,10 +49,7 @@ def submit_item(request):
 
 
 def item_view(request, item_name):
+    #Filter specific objects from database and parse them into json for the template render
     raw_results = storeItem.objects.filter(item_name__iexact=item_name)
-    print(raw_results)
     parsed_results = loads(serializers.serialize("json", raw_results))
     return render(request, 'storefront/item_page.html', {'items': parsed_results})
-
-#you left off at rendering the item data onto the item_page.html
-# storefront/static/storefront/media/Aywsy5a.png
