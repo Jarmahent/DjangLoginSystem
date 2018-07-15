@@ -29,9 +29,9 @@
         <div class="title">Store Front</div>
       </div>
 
-      <div class="container">
+      <div class="container" >
         {% for itemlist in items%}
-        <div class="items">
+        <div class="items" onclick="location.href='/store/catalog/{{itemlist.fields.item_name}}'">
           <div id="img-div"><img id="item-image" src="media/{{ itemlist.fields.item_image }}"></div>
           <div id="item-flex">
             <div id="name"><a href="#">{{itemlist.fields.item_name}}</a></div>
@@ -46,5 +46,6 @@
         </div>
         {% endfor %}
       </div>
+      <script></script>
    </body>
 </html>

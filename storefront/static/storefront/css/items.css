@@ -17,7 +17,7 @@
   height: auto;
   width:27%;
   justify-content: space-evenly;
-
+  cursor: pointer;
 }
 
 #item-image{
@@ -65,7 +65,7 @@ a{
   color: black;
   text-decoration: None;
 }
-a:hover{
+a:{
   color: #FF5722;
   cursor: pointer;
   text-decoration: underline;
@@ -186,4 +186,10 @@ body {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
+}
+
+
+
+.items:hover{
+  box-shadow: -1px 5px 14px 3px #00000057;
 }

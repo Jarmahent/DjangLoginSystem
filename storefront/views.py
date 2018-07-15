@@ -41,5 +41,11 @@ def submit_item(request):
     return render(request, 'storefront/submit_item.html', {"form": form})
 
 
+def item_view(request, item_name):
+    raw_results = storeItem.objects.filter(item_name__iexact=item_name)
+    print(raw_results)
+    parsed_results = loads(serializers.serialize("json", raw_results))
+    return render(request, 'storefront/item_page.html', {'items': parsed_results})
 
+#you left off at rendering the item data onto the item_page.html
 # storefront/static/storefront/media/Aywsy5a.png

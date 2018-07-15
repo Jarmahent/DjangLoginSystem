@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>TITLE</title>
+     <meta name="description" content="DESCRIPTION">
+    <link rel="stylesheet" href="PATH">
+
+     <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+ </head>
+
+ <body>
+  {% for itemlist in items %}
+    {{itemlist.pk}}
+    {{itemlist.fields.item_name}}
+    {{itemlist.fields.item_price|floatformat:2}}
+    {{itemlist.fields.item_is_available}}
+    {{itemlist.fields.item_description}}
+  {% endfor %}
+ </body>
+
+ </html>
