@@ -1,3 +1,5 @@
+{% load static %}
+
  <!DOCTYPE html>
  <html lang="en">
 
@@ -14,6 +16,8 @@
 
  <body>
   {% for itemlist in items %}
+  <div id="img-div"><img id="item-image" src="store{% get_media_prefix  %}{{ itemlist.fields.item_image }}"></div>
+    {% get_media_prefix %}
     {{itemlist.pk}}
     {{itemlist.fields.item_name}}
     {{itemlist.fields.item_price|floatformat:2}}
