@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>
+     {% for item in items %}
+      {{ item.fields.username }}
+     {% endfor %}
+   </title>
+     <meta name="description" content="DESCRIPTION">
+    <link rel="stylesheet" href="PATH">
+
+ </head>
+
+ <body>
+   User info page <br>
+   {% for item in items %}
+    {{ item.fields.last_login }}
+    {{ item.fields.is_superuser }}
+    {{ item.fields.first_name }}
+    {{ item.fields.last_name }}
+    {{ item.fields.is_active }}
+    {{ item.fields.date_joined}}
+
+
+
+   {% endfor %}
+ </body>
+
+ </html>

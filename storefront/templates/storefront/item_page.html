@@ -12,21 +12,23 @@
      <meta name="description" content="DESCRIPTION">
     <link href="{% static "storefront/css/item_page.css" %}" rel="stylesheet">
 
-     <!--[if lt IE 9]>
-       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-     <![endif]-->
  </head>
 
  <body>
-   <div class="item-container">
+   <div class="item-container1">
 {% for itemlist in items %}
   <div id="img-div"><img id="item-image" src="{% get_media_prefix  %}{{ itemlist.fields.item_image }}"></div>
-    {{itemlist.pk}}
-    {{itemlist.fields.item_name}}
-    {{itemlist.fields.item_price|floatformat:2}}
-    {{itemlist.fields.item_is_available}}
-    {{itemlist.fields.item_description}}
-    {{itemlist.fields.user_id}}
+  <div class="item-container2">
+      {{itemlist.pk}}
+      <div class="title">
+      {{itemlist.fields.item_name}}
+      </div>
+      {{itemlist.fields.item_price|floatformat:2}}
+      {{itemlist.fields.item_is_available}}
+      <div class="desc">{{itemlist.fields.item_description}}</div>
+
+      {{itemlist.fields.user_id}}
+  </div>
   {% endfor %}
 </div>
  </body>

@@ -3,6 +3,11 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from login.forms import CustomUserForm
+from django.contrib.auth.models import User
+from json import loads
+from django.core import serializers
+
+
 
 def index(request):
     return HttpResponse("Hello!")
@@ -38,3 +43,12 @@ def register(request):
     else:
         form = CustomUserForm()
     return render(request, 'registration/register.html', {'form': form})
+
+@login_required
+def user_page(request, userID):
+    raw_results = User.objects.defer("password", "email").filter(id__iexact=userID)
+    parsed_results = loads(
+    serializers.serialize("json",
+    raw_results,
+    fields=("username", "last_login", "id", "is_superuser", "first_name", "last_name", "is_active", "date_joined") ))
+    return render(request, 'users/user_page.html', {'items': parsed_results})
