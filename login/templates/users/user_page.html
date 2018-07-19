@@ -14,17 +14,27 @@
  </head>
 
  <body>
-   User info page <br>
    {% for item in items %}
-    {{ item.fields.last_login }}
-    {{ item.fields.is_superuser }}
-    {{ item.fields.first_name }}
-    {{ item.fields.last_name }}
-    {{ item.fields.is_active }}
-    {{ item.fields.date_joined}}
+    Username: {{ item.fields.username }} <br>
 
+    Last Login: {{ item.fields.last_login }} <br>
+    {% if item.fields.is_superuser == True %}
+    <div>⭐Admin</div>
+    {% else %}
+      <div>Standard User</div>
+    {% endif %}
 
+    First Name: {{ item.fields.first_name }} <br>
 
+    Last Name: {{ item.fields.last_name }} <br>
+    {% if item.fields.is_active == True %}
+      <div>🔵</div>
+    {% else %}
+      <div>🔴</div>
+    {% endif %}
+    {{ item.fields.is_active }} <br>
+
+    Date Joined: {{ item.fields.date_joined}} <br>
    {% endfor %}
  </body>
 
