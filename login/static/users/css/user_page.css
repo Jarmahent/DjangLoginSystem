@@ -16,7 +16,7 @@ body{
 }
 .instock{
 
-  color: green;
+  color: blue;
 }
 
 .outsock{
@@ -24,20 +24,10 @@ body{
   color: red;
 }
 
-#img{
-  border-style: solid;
-  box-shadow: 6px 6px 20px 0px #0000004f;
-  box-shadow: 10 10;
-  object-fit: contain;
-  height: 500px;
-  width: 500px;
-  border-color: #00000057;
-}
-
 .title{
-  font-size: 40px;
+  font-size: 80px;
 }
-
-.desc{
-  font-size: 20px
+.star{
+  font-size: 20px;
+  vertical-align: top;
 }

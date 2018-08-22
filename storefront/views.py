@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 '''
 Views for the store page
 store, submit_item, and item_view
-
 '''
 
 def store(request):

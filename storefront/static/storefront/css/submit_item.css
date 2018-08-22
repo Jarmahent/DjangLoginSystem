@@ -80,5 +80,8 @@
     }
 
 b{
-  font-family: "Roboto", sans-serif; 
+  font-family: "Roboto", sans-serif;
+}
+.textarea{
+  white-space: pre-wrap;
 }

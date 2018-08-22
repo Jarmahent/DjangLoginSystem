@@ -7,5 +7,5 @@ urlpatterns = [
     path('json', views.json, name="json"),
     path('userinfo', views.user_info, name="user_info"),
     path('register', views.register, name="register"),
-    path('user/<int:userID>', views.user_page, name="user_info")
+    path('user/<int:userID>', views.user_page, name="user_page")
 ]

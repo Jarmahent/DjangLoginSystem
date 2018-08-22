@@ -158,6 +158,8 @@ body {
 }
 
 .topnav .search-container button {
+  /* Height should not be a fixed pixelsize but % is not working! */
+  height: 32px;
   float: right;
   padding: 4.5px 10px;
   margin-top: 8px;

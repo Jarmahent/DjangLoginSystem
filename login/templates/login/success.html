@@ -20,7 +20,9 @@
       {% endif %}
       <div>
          You are logged in as {{ user.get_username }}
-         <div><a HREF="{% url 'logout'%}">LOGOUT</a></div>
+       </br>
+         <a href={% url 'store' %}>To Storefront </a>
+         <div><a href="{% url 'logout'%}">LOGOUT</a></div>
       </div>
       {% else %}
       <div>You are not logged in <a href="/accounts/login">Log in Here</a></div>

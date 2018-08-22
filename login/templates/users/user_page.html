@@ -1,41 +1,44 @@
+{% load static %}
+
  <!DOCTYPE html>
  <html lang="en">
 
 <head>
      <meta charset="UTF-8">
-     <title>
      {% for item in items %}
-      {{ item.fields.username }}
+     <title>{{item.fields.item_name}}</title>
      {% endfor %}
-   </title>
-     <meta name="description" content="DESCRIPTION">
-    <link rel="stylesheet" href="PATH">
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="{% static "users/css/user_page.css" %}" rel="stylesheet">
 
  </head>
 
  <body>
-   {% for item in items %}
-    Username: {{ item.fields.username }} <br>
+   <a href={% url 'store' %}>Back</a>
+{% for item in items %}
+  <div class="item-container">
 
-    Last Login: {{ item.fields.last_login }} <br>
-    {% if item.fields.is_superuser == True %}
-    <div>⭐Admin</div>
-    {% else %}
-      <div>Standard User</div>
-    {% endif %}
+      {% if item.fields.is_superuser == True %}
+        <div class="title"> {{item.fields.username}}<span class="star"/>⭐</span> </div>
+      {% else %}
+        <div class="title"> {{item.fields.username}} </div>
+      {% endif %}
 
-    First Name: {{ item.fields.first_name }} <br>
-
-    Last Name: {{ item.fields.last_name }} <br>
+      {{item.fields.first_name}} {{ item.fields.last_name }}
+    </br>
     {% if item.fields.is_active == True %}
-      <div>🔵</div>
+      <div class="instock"> Recently Online! </div>
     {% else %}
-      <div>🔴</div>
+      <div class="outsock"> User hasnt been on in a while </div>
     {% endif %}
-    {{ item.fields.is_active }} <br>
 
-    Date Joined: {{ item.fields.date_joined}} <br>
-   {% endfor %}
+
+
+
+      </br>
+    Joined: {{ item.fields.date_joined }}
+  </div>
+  {% endfor %}
  </body>
 
  </html>

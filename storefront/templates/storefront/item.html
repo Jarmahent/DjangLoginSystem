@@ -4,6 +4,7 @@
    <head>
       <meta charset="UTF-8">
       <title>Store Front</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <link href="{% static "storefront/css/items.css" %}" rel="stylesheet">
    </head>
@@ -21,7 +22,7 @@
     <form action="{% url 'store' %}", method="POST">
       {% csrf_token %}
       <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔎</button>
+      <button type="submit"><i class="fas fa-search"></i></button>
     </form>
   </div>
 </div>
